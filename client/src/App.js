@@ -23,6 +23,20 @@ class App extends Component {
         num2: 1,
         operator: "-"
       },
+
+      {
+        id: 3,
+        num1: 5,
+        num2: 0.1,
+        operator: "*"
+      },
+
+      {
+        id: 4,
+        num1: 5,
+        num2: 3,
+        operator: "/"
+      },
     ]
   }
   render() {
