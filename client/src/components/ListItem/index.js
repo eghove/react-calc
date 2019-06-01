@@ -12,6 +12,7 @@ export function ListItem({
   result
 
 }) {
+ 
   // recalculate the result
   if (operator === "+") {
     result = num1 + num2;

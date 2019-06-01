@@ -47,13 +47,15 @@ getData =() => {
     .then((res) => {
       this.setState({
         pastCalcs: res.data
-      })
+      });
+      console.log(this.state.pastCalcs);
     })
   }
 
 
   componentDidMount() {
     this.getData();
+    
    
   }
 
@@ -66,10 +68,10 @@ getData =() => {
           {this.state.pastCalcs.map(calcs => {
             return (
               <ListItem
-                key={calcs.id}
-                num1={calcs.num1}
-                num2={calcs.num2}
-                operator={calcs.operator}
+                key={calcs._id}
+                num1={calcs.num1[0]}
+                num2={calcs.num2[0]}
+                operator={calcs.operator[0]}
               />
             )
           })}
