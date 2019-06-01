@@ -1,0 +1,15 @@
+.jumbotron {
+  padding: 2rem;
+}
+
+.card {
+  margin-top: 1rem;
+}
+
+button {
+  margin-right: 1rem;
+}
+
+.jumbotron p {
+  text-decoration: none !important;
+}
