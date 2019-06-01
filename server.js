@@ -3,6 +3,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require("mongoose");
+const apiRoute = require("./routes/calcAPI");
 
 // pull in API routes
 
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
+app.use("/api/calculator", apiRoute);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactcalc");

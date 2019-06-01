@@ -13,8 +13,30 @@ const calcSeed = [
   {
     num1: 15.2,
     num2: 17,
-    operator: "add"
-  }
+    operator: "+",
+    calcCreated: Date.now()
+  },
+
+  {
+    num1: 15.2,
+    num2: 17,
+    operator: "-",
+    calcCreated: Date.now()
+  },
+
+  {
+    num1: 15.2,
+    num2: 17,
+    operator: "*",
+    calcCreated: Date.now()
+  },
+
+  {
+    num1: 15.2,
+    num2: 17,
+    operator: "/",
+    calcCreated: Date.now()
+  },
 ]
 
 db.Calculator
