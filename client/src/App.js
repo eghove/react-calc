@@ -12,19 +12,22 @@ class App extends Component {
 
   state = {
     pastCalcs: [],
-    result: "TEST",
+    result: "",
     num1: null,
     num2: null,
     operator: null
   }
   // function that posts data
   postData = (num1, num2, op) => {
-    
     API.postData({
       num1: num1,
       num2: num2,
       operator: op
     })
+      .then(() => {
+        this.getData();
+      }
+      )
   }
 
   // function that resets the calculator as a whole
@@ -176,7 +179,6 @@ class App extends Component {
         this.setState({
           pastCalcs: res.data
         });
-        console.log(this.state.pastCalcs);
       })
   }
 
@@ -193,6 +195,7 @@ class App extends Component {
     // triggers the calculator reset
     if (button === "Clear") {
       this.reset();
+      this.getData();
     }
 
     // if an operator button is pressed
@@ -225,6 +228,7 @@ class App extends Component {
         <Header />
         <Results result={this.state.result} />
         <Keypad onClick={this.onClick} />
+        <br />
         <History />
         <List>
           {this.state.pastCalcs.map(calcs => {
