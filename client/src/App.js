@@ -43,7 +43,7 @@ class App extends Component {
   }
   
 getData =() => {
- API.getAll()
+ API.getTen()
     .then((res) => {
       this.setState({
         pastCalcs: res.data

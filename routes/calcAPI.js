@@ -10,6 +10,12 @@ const calcController = require("../controllers/calcController");
 router.route("/all")
   .get(calcController.getAll);
 
+router.route("/get10")
+  .get(calcController.getTen);
+
+router.route("/post")
+  .post(calcController.storeCalc);
+
 
 // export the router
 module.exports = router;
