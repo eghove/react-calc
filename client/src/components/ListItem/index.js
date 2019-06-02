@@ -12,16 +12,20 @@ export function ListItem({
   result
 
 }) {
+
+  num1 = Number(num1);
+  num2 = Number(num2);
  
   // recalculate the result
   if (operator === "+") {
-    result = num1 + num2;
+    result = (num1 + num2).toPrecision(10).replace(/(?:\.0+|(\.\d+?)0+)$/, "$1");
   } else if (operator === "-") {
-    result = num1 - num2;
+    // not sure why this subtraction function isn't working the way I want
+    result = (num1 - num2).toPrecision(10).replace(/(?:\.0+|(\.\d+?)0+)$/, "$1");
   } else if (operator === "*") {
-    result = num1 * num2;
+    result = (num1 * num2).toPrecision(10).replace(/(?:\.0+|(\.\d+?)0+)$/, "$1");
   } else if (operator === "/") {
-    result = num1 / num2;
+    result = (num1 / num2).toPrecision(10).replace(/(?:\.0+|(\.\d+?)0+)$/, "$1");
   }
   else {
     result = "illegal operation"
