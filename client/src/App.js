@@ -17,6 +17,15 @@ class App extends Component {
     num2: null,
     operator: null
   }
+  // function that posts data
+  postData = (num1, num2, op) => {
+    
+    API.postData({
+      num1: num1,
+      num2: num2,
+      operator: op
+    })
+  }
 
   // function that resets the calculator as a whole
   reset = () => {
@@ -81,30 +90,31 @@ class App extends Component {
       // alert("Valid operation");
       let temp1 = Number(this.state.num1);
       let temp2 = Number(this.state.num2);
+      let temp4 = this.state.operator;
       if (this.state.operator === "+") {
         let temp3 = temp1 + temp2;
         this.setState({ result: temp3 }, () => {
-          // callback where the post function will get called
+          this.postData(temp1, temp2, temp4);
         })
       }
       else if (this.state.operator === "-") {
         let temp3 = temp1 - temp2;
         this.setState({ result: temp3 }, () => {
-          // callback where the post function will get called
+          this.postData(temp1, temp2, temp4);
         })
       }
       else if (this.state.operator === "*") {
         let temp3 = temp1 * temp2;
         this.setState({ result: temp3 }, () => {
-          // callback where the post function will get called
+          this.postData(temp1, temp2, temp4);
         })
       }
       else if (this.state.operator === "/") {
         let temp3 = temp1 / temp2;
         this.setState({ result: temp3 }, () => {
-          // callback where the post function will get called
+          this.postData(temp1, temp2, temp4);
         })
-      } 
+      }
       else {
         alert("Something went wrong. Please clear calculator and start again");
       }
@@ -171,6 +181,8 @@ class App extends Component {
   }
 
 
+
+
   componentDidMount() {
     this.getData();
   }
@@ -219,9 +231,9 @@ class App extends Component {
             return (
               <ListItem
                 key={calcs._id}
-                num1={calcs.num1[0]}
-                num2={calcs.num2[0]}
-                operator={calcs.operator[0]}
+                num1={calcs.num1}
+                num2={calcs.num2}
+                operator={calcs.operator}
               />
             )
           })}

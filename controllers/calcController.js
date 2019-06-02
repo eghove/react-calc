@@ -17,12 +17,7 @@ module.exports = {
   },
 
   storeCalc: function (req, res) {
-    db.Calculator.create({
-      num1: req.body.num1,
-      num2: req.body.num2,
-      operator: req.body.operator,
-      calcCreated: Date.now()
-    })
+    db.Calculator.create(req.body)
       .then(dbResults => res.json(dbResults))
       .catch(err => res.status(422).json(err));
 
