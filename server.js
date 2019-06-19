@@ -37,6 +37,7 @@ server.listen(PORT, () => {
 });
 
 
+// socket.io emitters
 io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('disconnect', function(){
@@ -48,10 +49,4 @@ io.on('connection', function(socket){
   })
 });
 
-// io.on('connection', function (socket) {
-//   socket.emit('news', { hello: 'world' });
-//   socket.on('my other event', function (data) {
-//     console.log(data);
-//   });
-// });
 

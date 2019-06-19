@@ -199,14 +199,7 @@ class App extends Component {
 
 
   componentDidMount = () => {
-    // this.getData();
-    // testing out sockets
     let socket = socketIOClient(this.state.endpoint);
-    // socket.on('news', function (data) {
-    //   console.log(data);
-    //   socket.emit('my other event', { my: 'data' });
-    // });
-   
     socket.on('stored_data', this.getData);
 
   }
