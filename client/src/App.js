@@ -6,19 +6,28 @@ import { List, ListItem } from "./components/ListItem";
 import Results from './components/Results'
 import Keypad from './components/Keypad';
 import API from "./utils/API";
+import socketIOClient from "socket.io-client";
+
 
 
 class App extends Component {
-
-  state = {
-    pastCalcs: [],
-    result: "",
-    num1: null,
-    num2: null,
-    operator: null
+  constructor() {
+    super();
+    this.state = {
+      pastCalcs: [],
+      result: "",
+      num1: null,
+      num2: null,
+      operator: null,
+      endpoint: 'http://localhost:3001/'
+    }
   }
+
+
   // function that posts data
   postData = (num1, num2, op) => {
+    let socket = socketIOClient(this.state.endpoint);
+
     API.postData({
       num1: num1,
       num2: num2,
@@ -26,6 +35,8 @@ class App extends Component {
     })
       .then(() => {
         this.getData();
+        socket.emit("new_data");
+        socket.disconnect();
       }
       )
   }
@@ -182,10 +193,25 @@ class App extends Component {
       })
   }
 
+  tester = () => {
+    console.log("test worked")
+  }
 
 
+  componentDidMount = () => {
+    // this.getData();
+    // testing out sockets
+    let socket = socketIOClient(this.state.endpoint);
+    // socket.on('news', function (data) {
+    //   console.log(data);
+    //   socket.emit('my other event', { my: 'data' });
+    // });
+   
+    socket.on('stored_data', this.getData);
 
-  componentDidMount() {
+  }
+
+  componentDidUpdate() {
     this.getData();
   }
 
